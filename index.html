@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zitadel Debug Tool</title>
+    <script src="/config.runtime.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <header>
+      <h1>🔐 Zitadel Debug Tool</h1>
+      <div id="session-bar">
+        <span id="session-status">Checking session...</span>
+        <button id="btn-login"  class="btn btn-primary" hidden>Login</button>
+        <button id="btn-logout-local" class="btn btn-secondary" hidden>Logout (local)</button>
+        <button id="btn-logout-sso"   class="btn btn-danger"    hidden>Logout (SSO)</button>
+        <button id="btn-toggle-config" class="btn btn-secondary">⚙️ Config</button>
+      </div>
+    </header>
+    <div id="config-panel-flyout" hidden>
+      <div id="config-panel-container"></div>
+    </div>
+    <main id="app" hidden>
+
+      <!-- ── Token Inspector ───────────────────────────── -->
+      <section>
+        <h2>🪙 Token Inspector</h2>
+        <div class="token-grid">
+          <div>
+            <h3>ID Token</h3>
+            <div id="id-token-card"></div>
+          </div>
+          <div>
+            <h3>Access Token</h3>
+            <div id="access-token-card"></div>
+          </div>
+          <div>
+            <h3>Refresh Token</h3>
+            <div id="refresh-token-card"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Token Actions ─────────────────────────────── -->
+      <section>
+        <h2>🔄 Token Actions</h2>
+        <div class="action-row">
+          <button id="btn-refresh"         class="btn btn-secondary">Force Token Refresh</button>
+          <button id="btn-revoke-access"   class="btn btn-secondary">Revoke Access Token</button>
+          <button id="btn-revoke-refresh"  class="btn btn-secondary">Revoke Refresh Token</button>
+        </div>
+        <div id="action-result" class="result-box" hidden></div>
+      </section>
+
+      <!-- ── Access Control Debugger ───────────────────── -->
+      <section>
+        <h2>🛡️ Claims & Roles</h2>
+        <div id="claims-table-container"></div>
+      </section>
+
+      <section>
+        <h2>🛡️ Access Control Debugger</h2>
+        <div id="access-control-container"></div>
+      </section>
+
+    </main>
+
+    <!-- Shown only when logged out -->
+    <div id="logged-out-msg" hidden>
+      <p>You are not logged in. Click <strong>Login</strong> to begin.</p>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

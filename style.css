@@ -1,0 +1,235 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: monospace;
+  background: #0f0f0f;
+  color: #e0e0e0;
+  padding: 1.5rem;
+  line-height: 1.6;
+}
+
+h1 { font-size: 1.4rem; }
+h2 { font-size: 1.1rem; margin-bottom: 1rem; color: #aaa; border-bottom: 1px solid #333; padding-bottom: 0.4rem; }
+h3 { font-size: 0.95rem; margin-bottom: 0.5rem; color: #ccc; }
+h4 { font-size: 0.85rem; margin-bottom: 0.3rem; color: #888; }
+
+section { margin-bottom: 2.5rem; }
+
+/* ── Header ── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#session-bar { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+#session-status { font-size: 0.9rem; color: #aaa; }
+
+/* ── Buttons ── */
+.btn {
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+.btn-primary   { background: #4f8ef7; color: #fff; }
+.btn-secondary { background: #333; color: #e0e0e0; }
+.btn-danger    { background: #b33; color: #fff; }
+.btn:hover     { opacity: 0.85; }
+
+/* ── Token grid ── */
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Token card ── */
+.token-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.token-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.token-label   { font-weight: bold; font-size: 0.85rem; }
+.token-expiry  { font-size: 0.8rem; color: #f0a500; flex: 1; }
+.token-absent  { color: #555; font-style: italic; }
+
+.btn-copy {
+  padding: 0.2rem 0.6rem;
+  background: #2a2a2a;
+  color: #aaa;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.btn-copy:hover { background: #333; }
+
+.token-section { margin-top: 0.75rem; }
+
+pre {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 4px;
+  padding: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.78rem;
+  color: #7ec8a0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+pre.opaque { color: #aaa; }
+
+/* ── Action row ── */
+.action-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+.result-box {
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.result-ok    { background: #1a3a1a; color: #7ec8a0; border: 1px solid #2a5a2a; }
+.result-error { background: #3a1a1a; color: #ff8a8a; border: 1px solid #5a2a2a; }
+
+/* ── Claims table ── */
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.claims-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  background: #1a1a1a;
+  color: #888;
+  border-bottom: 1px solid #333;
+}
+
+.claims-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #222;
+  vertical-align: top;
+}
+
+.claim-key {
+  color: #4f8ef7;
+  white-space: nowrap;
+  padding-right: 1.5rem;
+  width: 1%;
+}
+
+.claims-table pre {
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* ── Access Control Debugger ── */
+.debug-panel {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+
+.hint {
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.hint code {
+  background: #111;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  color: #7ec8a0;
+  font-size: 0.8rem;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.field-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.field-grid input,
+.field-grid select,
+.field-grid textarea {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: monospace;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  width: 100%;
+}
+
+.field-grid textarea { resize: vertical; }
+
+.field-grid input:focus,
+.field-grid select:focus,
+.field-grid textarea:focus {
+  outline: none;
+  border-color: #4f8ef7;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: #555;
+}
+/* ── Config Panel ── */
+#config-panel-flyout {
+  margin-bottom: 2rem;
+  border: 1px solid #4f8ef7;
+  border-radius: 6px;
+  padding: 1.25rem;
+  background: #0d1a2e;
+}
+
+.config-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.config-badge {
+  font-size: 0.78rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.config-badge-override { background: #3a2a00; color: #f0a500; border: 1px solid #5a4000; }
+.config-badge-default  { background: #1a3a1a; color: #7ec8a0; border: 1px solid #2a5a2a; }

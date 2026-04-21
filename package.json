@@ -1,0 +1,18 @@
+{
+  "name": "zitadel-debug-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "vite": "^8.0.9"
+  },
+  "dependencies": {
+    "oidc-client-ts": "^3.5.0"
+  }
+}
