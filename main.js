@@ -2,6 +2,8 @@ import { getUser, login, logoutLocal, logoutSSO, refreshTokens, revokeAccessToke
 import { renderTokenCard, startExpiryCountdowns } from "./token-inspector.js";
 import { renderAccessControlDebugger } from "./access-control-debugger.js";
 import { renderConfigPanel } from "./config-panel.js";
+import { renderTokenExchangePanel } from "./token-exchange-panel.js";
+
 
 // ── Element refs ──────────────────────────────────────────
 const sessionStatus = document.getElementById("session-status");
@@ -73,6 +75,11 @@ function renderLoggedIn(user) {
     user,
   );
 
+  renderTokenExchangePanel(
+    document.getElementById("token-exchange-container"),
+    user,
+  );
+
   countdownInterval = startExpiryCountdowns();
 }
 
@@ -84,6 +91,10 @@ function renderLoggedOut() {
   btnLogoutSSO.hidden = true;
   appSection.hidden = true;
   loggedOutMsg.hidden = false;
+  renderTokenExchangePanel(
+    document.getElementById("token-exchange-container"),
+    null,
+  );
 
   if (countdownInterval) clearInterval(countdownInterval);
 }
