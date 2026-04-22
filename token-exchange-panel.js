@@ -11,7 +11,7 @@ import { renderTokenCard } from "./token-inspector.js";
 function tokenTypeOptions(selectedValue = TOKEN_TYPES.ACCESS_TOKEN) {
   return Object.entries(TOKEN_TYPE_LABELS).map(([value, label]) => `
     <option value="${value}" ${value === selectedValue ? "selected" : ""}>
-      ${label} — <small>${value}</small>
+      ${label} — ${value}
     </option>
   `).join("");
 }
@@ -244,8 +244,6 @@ function wireUpPanel(user) {
 
 // ── Exchange handler ──────────────────────────────────────
 
-// Holds the last result so export buttons always have something to work with
-let lastResult = null;
 
 async function handleExchange() {
   const params = readFormValues();
@@ -267,7 +265,6 @@ async function handleExchange() {
 
   try {
     const result = await performTokenExchange(params);
-    lastResult = result;
 
     renderRequestPanel(result.request);
     renderResponsePanel(result.response);
@@ -280,7 +277,7 @@ async function handleExchange() {
   }
 }
 
-// ── Form reader ─────��─────────────────────────────────────
+// ── Form reader ─────────────────────────────────────────────
 
 function readFormValues() {
   return {
